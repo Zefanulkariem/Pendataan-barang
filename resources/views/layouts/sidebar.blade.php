@@ -50,10 +50,16 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="far fa-circle nav-icon"></i>
-              <p>Logout</p>
+            <i class="far fa-circle nav-icon"></i>
+            <a href="{{ route('logout') }}"
+                onclick="event.preventDefault();
+                            document.getElementById('logout-form').submit();">
+                {{ __('Logout') }}
             </a>
+
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                @csrf
+            </form>
           </li>
         </ul>
       </li>

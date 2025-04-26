@@ -19,7 +19,7 @@
             <select class="form-select" id="merk" name="merk" required>
                 <option value="" disabled>Pilih Merk</option>
                 @foreach($merks as $merk)
-                    <option value="{{ $merk->nama }}" {{ (old('merk', $barang->merk) == $merk->nama) ? 'selected' : '' }}>{{ $merk->nama }}</option>
+                    <option value="{{ $merk->nama ?? '-'}}" {{ (old('merk', $barang->merk) == $merk->nama) ? 'selected' : '' }}>{{ $merk->nama }}</option>
                 @endforeach
             </select>
         </div>

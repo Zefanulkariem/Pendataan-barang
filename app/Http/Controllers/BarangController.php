@@ -15,8 +15,9 @@ class BarangController extends Controller
     public function index()
     {
         $barangs = Barang::with('merk')->get();
+        $merks = Merk::all();
         // dd($barangs);
-        return view('home.barang.index', compact('barangs'));
+        return view('home.barang.index', compact('barangs', 'merks'));
     }
 
     /**
@@ -27,7 +28,7 @@ class BarangController extends Controller
         $merks = Merk::all();
         return view('home.barang.tambah', compact('merks'));
     }
-
+    
     /**
      * Store a newly created resource in storage.
      */
@@ -62,16 +63,17 @@ class BarangController extends Controller
         $barang = Barang::findOrFail($id);
         return view('home.barang.show', compact('barang'));
     }
-
+    
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
         $barang = Barang::findOrFail($id);
-        return view('home.barang.edit', compact('barang'));
+        $merks = Merk::all();
+        return view('home.barang.edit', compact('barang', 'merks'));
     }
-
+    
     /**
      * Update the specified resource in storage.
      */
