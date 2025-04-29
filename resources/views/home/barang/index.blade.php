@@ -42,7 +42,7 @@
                                         @foreach ($barangs as $barang)
                                             <tr>
                                                 <td>{{ $barang->nama }}</td>
-                                                <td>{{ $barang->jenis }}</td>
+                                                <td>{{ $barang->jenis->nama }}</td>
                                                 <td>{{ $barang->merk->nama ?? '-'}}</td>
                                                 <td>
                                                     @if ($barang->gambar)

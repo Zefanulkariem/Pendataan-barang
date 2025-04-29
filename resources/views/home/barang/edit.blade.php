@@ -11,8 +11,13 @@
             <input type="text" class="form-control" id="nama" name="nama" value="{{ old('nama', $barang->nama) }}" required>
         </div>
         <div class="mb-3">
-            <label for="jenis" class="form-label">Jenis Barang</label>
-            <input type="text" class="form-control" id="jenis" name="jenis" value="{{ old('jenis', $barang->jenis) }}" required>
+            <label for="jenis_id" class="form-label">Jenis Barang</label>
+            <select class="form-select" id="jenis_id" name="jenis_id" required>
+                <option value="" disabled>Pilih Jenis</option>
+                @foreach($jenis as $j)
+                    <option value="{{ $j->id }}" {{ (old('jenis_id', $barang->jenis_id) == $j->id) ? 'selected' : '' }}>{{ $j->nama }}</option>
+                @endforeach
+            </select>
         </div>
         <div class="mb-3">
             <label for="merk" class="form-label">Merk</label>

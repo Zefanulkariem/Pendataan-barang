@@ -26,7 +26,8 @@ class BarangController extends Controller
     public function create()
     {
         $merks = Merk::all();
-        return view('home.barang.tambah', compact('merks'));
+        $jenis = \App\Models\Jenis::all();
+        return view('home.barang.tambah', compact('merks', 'jenis'));
     }
     
     /**
@@ -36,7 +37,7 @@ class BarangController extends Controller
     {
         $validated = $request->validate([
             'nama' => 'required|string|max:255',
-            'jenis' => 'required|string|max:255',
+            'jenis_id' => 'required|exists:jenis,id',
             'merk' => 'required|string|max:255',
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'stok' => 'required|integer|min:0',
@@ -71,7 +72,8 @@ class BarangController extends Controller
     {
         $barang = Barang::findOrFail($id);
         $merks = Merk::all();
-        return view('home.barang.edit', compact('barang', 'merks'));
+        $jenis = \App\Models\Jenis::all();
+        return view('home.barang.edit', compact('barang', 'merks', 'jenis'));
     }
     
     /**
@@ -83,7 +85,7 @@ class BarangController extends Controller
 
         $validated = $request->validate([
             'nama' => 'required|string|max:255',
-            'jenis' => 'required|string|max:255',
+            'jenis_id' => 'required|exists:jenis,id',
             'merk' => 'required|string|max:255',
             'gambar' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
             'stok' => 'required|integer|min:0',
